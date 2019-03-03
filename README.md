@@ -28,8 +28,10 @@ prefer another language.
 
 Some examples:
 
-INITIALIZE;F 40 255 255;PUSH;
-RESET;H 20 20 20;R 160 56 14;UmlatA 0 0 2;PUSH;
+INITIALIZE;F 40 255 255;PUSH;  
+
+RESET;H 20 20 20;R 160 56 14;UmlatA 0 0 2;PUSH;  
+
 RESET;TERMINATE;
 
 When compiling you might need to copy the .txt files into the directory. In the
