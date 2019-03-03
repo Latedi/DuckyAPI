@@ -73,17 +73,17 @@ After testing the software and various effects I found a feature which allows yo
 to customize the color of each button so I decided to focus on this feature and
 attempt to analyze the USB packets sent to the keyboard when utilizing it.
 
-To do this I used [WireShark](https://www.wireshark.org/) and the
+To do this I used [Wireshark](https://www.wireshark.org/) and the
 [USBPcap](https://desowin.org/usbpcap/) plugin in particular. You can run
 USBPcapCMD.exe to get some initial information regarding your USB devices. However
 this doesn't help all that much.
 
 ![USBPcapCMD.exe](/HowTo/usbpcap.jpg?raw=true "USBPcapCMD.exe")
 
-Then in WireShark you can sniff the traffic to and from the different USB interfaces
+Then in Wireshark you can sniff the traffic to and from the different USB interfaces
 and see if you can find your keyboard.
 
-![WireShark interfaces](/HowTo/wireshark1.jpg?raw=true "WireShark interfaces")
+![Wireshark interfaces](/HowTo/wireshark1.jpg?raw=true "Wireshark interfaces")
 
 The Ducky Shine 7 is easily spotted if you try the different interfaces since it will
 send packets when you press keys on the keyboard. Note that you might have problems
@@ -92,7 +92,7 @@ sniffing some ports so try different USB ports if you encounter errors here.
 Starting the Ducky software called DuckyRGBSeries, about 1200 packets are sent back
 and forth. Disregard these for now. By selecting the tab called LED Zone Cuztomization
 you can set the color independently on every single key. Mark the last packet in
-WireShark and then change the color of a single key (use only the mouse for a clean
+Wireshark and then change the color of a single key (use only the mouse for a clean
 capture, or another keyboard). This will show that 10 packets are sent to the keyboard,
 and 10 responses are sent back. These 10 packets are what is setting the color on the
 keyboard and you will notice similar packets being sent every time you change the
@@ -116,7 +116,7 @@ and increased each key like 64 3 3, 64 4 4 and so on.
 
 We can also see some bytes that appear to be the same every time. These are probably
 some form of header values, telling the keyboard and the software what type of packet
-it is and how to parse the data sent. In WireShark you will want to focus on the
+it is and how to parse the data sent. In Wireshark you will want to focus on the
 "Leftover Capture Data" as the bytes before that are part of how a USB device
 communicates with the computer.
 
@@ -168,10 +168,10 @@ need to know exactly what is going on.
 
 In order to do this, we will simply replay the traffic sent from the Ducky software
 when it takes control and releases it. Now a problem here seems to be that you can't
-export USB traffic from WireShark easily. I opted to use the File -> Export Packet 
+export USB traffic from Wireshark easily. I opted to use the File -> Export Packet 
 Dissections -> ... tool in order to export the packets (Important note when exporting: 
-You have to expand the data you want to export in the disector or WireShark will not 
-export that data). However WireShark will not allow you to export data and metadata
+You have to expand the data you want to export in the disector or Wireshark will not 
+export that data). However Wireshark will not allow you to export data and metadata
 simultaneously. So what I did is I exported both as plaintext and to "C" arrays, and
 then used a python script to parse these files and outputting into a more suitable
 format. This can be found in the script packet Comparer.py. This script has the ability
@@ -197,4 +197,3 @@ give you a good starting point if you have 0 experience with USB like I had.
 * https://blog.sverrirs.com/2015/10/how-to-use-xbox-360-big-button.html
 * https://blog.sverrirs.com/2016/04/reverse-engineer-usb-protocol.html
 * https://www.beyondlogic.org/usbnutshell/usb1.shtml
-
