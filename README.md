@@ -4,12 +4,13 @@ your own custom effects and interact with other software, etc. This was develope
 for Ducky Shine 7 but might work for other keyboard (untested).
 
 The following is a video of some sample programs in action.
+
 [![Hacked Ducky Shine 7](https://img.youtube.com/vi/qrfjqkIY_k0/0.jpg)](https://youtu.be/qrfjqkIY_k0)
 
 ## The API
 The API itself is a named pipe created by a c++ program based on hidapi. The code is
 based on the hidapi sample. To talk to the API, send commands to the named pipe
-** \\.\pipe\DuckyController **
+**\\\\.\pipe\DuckyController**
 
 The commands are sent in batches separated by ;
 
@@ -18,7 +19,7 @@ The following commands can be sent:
 * RESET - Set all key colors to black (no lighting)
 * PUSH - Pushe the current set of colors to the keyboard
 * TERMINATE - Give control back to the keyboard firmware
-* <Key name> <R> <G> <B> - Set the color of a key
+* \<Key name\> \<R\> \<G\> \<B\> - Set the color of a key
 
 The different key names can be found in ColorSetter.cpp.
 Note that the keyboard used had Scandinavian key caps and the keys has been named
