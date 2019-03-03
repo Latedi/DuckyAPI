@@ -169,14 +169,16 @@ need to know exactly what is going on.
 In order to do this, we will simply replay the traffic sent from the Ducky software
 when it takes control and releases it. Now a problem here seems to be that you can't
 export USB traffic from WireShark easily. I opted to use the File -> Export Packet 
-Dissections -> ... tool in order to export the packets. However WireShark will not
-allow you to export data and metadata simultaneously. So what I did is I exported
-both as plaintext and to "C" arrays, and then used a python script to parse these
-files and outputting into a more suitable format. This can be found in the script
-packet Comparer.py. This script has the ability to read txt and array files, combine
-the files and then compare to another file, I used this to compare the conversations
-from different starts of the Ducky software to look for differences. Really what you
-want though is the last couple of lines where the data is saved into a combined file.
+Dissections -> ... tool in order to export the packets (Important note when exporting: 
+You have to expand the data you want to export in the disector or WireShark will not 
+export that data). However WireShark will not allow you to export data and metadata
+simultaneously. So what I did is I exported both as plaintext and to "C" arrays, and
+then used a python script to parse these files and outputting into a more suitable
+format. This can be found in the script packet Comparer.py. This script has the ability
+to read txt and array files, combine the files and then compare to another file, I used
+this to compare the conversations from different starts of the Ducky software to look
+for differences. Really what you want though is the last couple of lines where the data
+is saved into a combined file.
 
 Armed with the knowledge to construct packets and the data to replay in order to
 take/release control we can now proceed and write software to talk to the keyboard.
