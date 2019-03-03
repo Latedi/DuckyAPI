@@ -83,7 +83,7 @@ this doesn't help all that much.
 Then in WireShark you can sniff the traffic to and from the different USB interfaces
 and see if you can find your keyboard.
 
-![WireShark interfaces](/HowTo/wireshark_1.jpg?raw=true "WireShark interfaces")
+![WireShark interfaces](/HowTo/wireshark\_1.jpg?raw=true "WireShark interfaces")
 
 The Ducky Shine 7 is easily spotted if you try the different interfaces since it will
 send packets when you press keys on the keyboard. Note that you might have problems
@@ -98,21 +98,21 @@ and 10 responses are sent back. These 10 packets are what is setting the color o
 keyboard and you will notice similar packets being sent every time you change the
 color on a key.
 
-![Packets changing the colors](/HowTo/wireshark_2.jpg?raw=true "Packets changing the colors")
+![Packets changing the colors](/HowTo/wireshark\_2.jpg?raw=true "Packets changing the colors")
 
 Now by look at the bytes and with some trial and error, it's easy to see that the
 RGB values for a key are sent in these packets. For example setting Enter key to
 the RGB values 64, 100, 255 shows the hexadecimal forms of these values in the
 sixth packet: 40, 64, FF
 
-![Values for Enter](/HowTo/wireshark_3.jpg?raw=true "Values for Enter")
+![Values for Enter](/HowTo/wireshark\_3.jpg?raw=true "Values for Enter")
 
 After this I enumerated every single key by giving them unique values and noting down
 which packet they were sent in and at what offset in the packet. The following picture
 shows how it looked like halfway through this process. I started with values 64 2 2
 and increased each key like 64 3 3, 64 4 4 and so on.
 
-![Ducky software keys](/HowTo/ducky_software_keys.jpg?raw=true "Ducky software keys")
+![Ducky software keys](/HowTo/ducky\_software\_keys.jpg?raw=true "Ducky software keys")
 
 We can also see some bytes that appear to be the same every time. These are probably
 some form of header values, telling the keyboard and the software what type of packet
@@ -120,11 +120,11 @@ it is and how to parse the data sent. In WireShark you will want to focus on the
 "Leftover Capture Data" as the bytes before that are part of how a USB device
 communicates with the computer.
 
-![First packet](/HowTo/wireshark_4.jpg?raw=true "First packet")
+![First packet](/HowTo/wireshark\_4.jpg?raw=true "First packet")
 
 This image is the first packet sent every time and it always has the same values.
 
-![Final packet](/HowTo/wireshark_5.jpg?raw=true "Final packet")
+![Final packet](/HowTo/wireshark\_5.jpg?raw=true "Final packet")
 
 This is the final packet sent every time and it also always has the same values.
 
