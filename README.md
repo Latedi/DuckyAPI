@@ -186,3 +186,13 @@ tried and true HIDAPI.
 Since I wanted to program using preferably python, I made the program talking
 to the keyboard into a sort of API which takes input from a named pipe. You can
 send data to it as described above.
+
+## Useful links
+
+Some reading I found useful during this project in no particular order. This should
+give you a good starting point if you have 0 experience with USB like I had.
+
+* https://blog.sverrirs.com/2015/10/how-to-use-xbox-360-big-button.html
+* https://blog.sverrirs.com/2016/04/reverse-engineer-usb-protocol.html
+* https://www.beyondlogic.org/usbnutshell/usb1.shtml
+
