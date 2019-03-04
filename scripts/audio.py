@@ -281,7 +281,7 @@ except IOError:
 
 
 
-#6:       Speakers (High Definition Audio Device)   <-- This is my speaker device, so I hardcoded it.
+#6:       Speakers (Realtek High Definiti...   <-- This is my speaker device, so I hardcoded it.
 # Uncomment code here to input manually or hardcode the indices to find your audio device.
 # This might vary depending on your pc, drivers, etc so you will need to find it.
 # In case of multiple devices with the same name you might want to use hardcoded indices.
