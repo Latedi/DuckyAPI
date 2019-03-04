@@ -22,7 +22,7 @@ The commands are sent in batches separated by ;
 The following commands can be sent:
 * INITIALIZE - Takes control of the keyboard
 * RESET - Set all key colors to black (no lighting)
-* PUSH - Pushe the current set of colors to the keyboard
+* PUSH - Pushes the current set of colors to the keyboard
 * TERMINATE - Give control back to the keyboard firmware
 * \<Key name\> \<R\> \<G\> \<B\> - Set the color of a key
 
@@ -102,7 +102,7 @@ color on a key.
 ![Packets changing the colors](/HowTo/wireshark2.jpg?raw=true "Packets changing the colors")
 
 Now by look at the bytes and with some trial and error, it's easy to see that the
-RGB values for a key are sent in these packets. For example setting Enter key to
+RGB values for a key are sent in these packets. For example setting the Enter key to
 the RGB values 64, 100, 255 shows the hexadecimal forms of these values in the
 sixth packet: 40, 64, FF
 
@@ -132,7 +132,7 @@ This is the final packet sent every time and it also always has the same values.
 As for the packets in between, they are obviously not static as they change with
 the colors we set. However some parts are always the same here too. Notably there
 is also an index value noting the packet number, starting at 00 and ending at 07.
-In other word we sent the first packet, 0 to 7 = 8 color packets and the final
+In other words we sent the first packet, 0 to 7 = 8 color packets and the final
 packet for a total of 10.
 
 From this I guessed the following:
@@ -175,18 +175,20 @@ You have to expand the data you want to export in the disector or Wireshark will
 export that data). However Wireshark will not allow you to export data and metadata
 simultaneously. So what I did is I exported both as plaintext and to "C" arrays, and
 then used a python script to parse these files and outputting into a more suitable
-format. This can be found in the script packet Comparer.py. This script has the ability
-to read txt and array files, combine the files and then compare to another file, I used
-this to compare the conversations from different starts of the Ducky software to look
-for differences. Really what you want though is the last couple of lines where the data
-is saved into a combined file.
+format. This can be found in the script packetComparer.py. This script has the ability
+to read txt and array files, combine the files and then compare to another set of files.
+I used this to compare the conversations from different starts of the Ducky software to
+look for differences. Really what you want though is the last couple of lines where the
+data is saved into a combined file.
 
 Armed with the knowledge to construct packets and the data to replay in order to
 take/release control we can now proceed and write software to talk to the keyboard.
 Really at this point I tried about 5 different libraries, failed and settled for the
-tried and true HIDAPI.
+tried and true HIDAPI. The replayed packets also gives about 500 packets back which
+are not the expected responses (Maybe it's keyboard configurations I changed or
+something) but that does not interfere with actually taking control of the keyboard.
 
-Since I wanted to program using preferably python, I made the program talking
+Since I wanted to program using python, preferably, I made the program talking
 to the keyboard into a sort of API which takes input from a named pipe. You can
 send data to it as described above.
 
@@ -198,3 +200,5 @@ give you a good starting point if you have 0 experience with USB like I had.
 * https://blog.sverrirs.com/2015/10/how-to-use-xbox-360-big-button.html
 * https://blog.sverrirs.com/2016/04/reverse-engineer-usb-protocol.html
 * https://www.beyondlogic.org/usbnutshell/usb1.shtml
+* https://www.daskeyboard.io/get-started/
+
