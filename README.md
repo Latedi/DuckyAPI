@@ -1,7 +1,8 @@
 # DuckyAPI
 Control your Ducky Keyboard's RGB lighting via a named pipe. Can be used to create
 your own custom effects and interact with other software, etc. This was developed
-for Ducky Shine 7 but might work for other keyboard (untested).
+for Ducky Shine 7 but might work for other keyboard (untested). Firmware version:
+V1.01.04.
 
 The following is a video of some sample programs in action.
 
