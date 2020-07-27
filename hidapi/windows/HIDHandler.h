@@ -11,6 +11,7 @@ class HIDHandler
 private:
 	const uint32_t DuckyVID = 0x04d9;
 	const uint32_t DuckyPID = 0x0348;
+	const uint32_t UsagePage = 0xff00;
 	unsigned char bufIn[256];
 	unsigned char bufOut[256];
 

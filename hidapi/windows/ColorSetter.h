@@ -21,7 +21,7 @@ class ColorSetter
 private:
 	std::vector<KeyColorData> keys;
 	HIDHandler* handler;
-	uint8_t bytes[640];
+	uint8_t bytes[512];
 
 	void GenerateKeys();
 	void AddKey(char name[], uint8_t packetNumber, uint8_t offset);
@@ -34,5 +34,6 @@ public:
 	void PushColors();
 	void ResetColors();
 	void RunTest();
+	void TestOffset(uint8_t packet, uint8_t offset);
 };
 
