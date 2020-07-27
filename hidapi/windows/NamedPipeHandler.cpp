@@ -170,7 +170,10 @@ void NamedPipeHandler::PrintMessageQueue()
 		{
 			std::cout << "Push";
 		}
-		else if (message.MessageType = 'S')
+		else if (message.MessageType == 'I') {
+			std::cout << "Initialize";
+		}
+		else if (message.MessageType == 'S')
 		{
 			std::cout << "Set Color. Key: " << message.optionalKey.c_str() << ". Colors: " << unsigned(message.optionalR) <<
 				" " << unsigned(message.optionalG) << " " << unsigned(message.optionalB);
